@@ -25,7 +25,7 @@ class LoginController extends Controller
         if (is_object($aluno)) {
 
             if (password_verify($data['senha'], $aluno->senha)) {
-                $token = $aluno->createToken($aluno->email, 'aluno')->accessToken;
+                $token = $aluno->createToken($aluno->email, ['aluno'])->accessToken;
 
                 return response()->json([
                     'status' => true,

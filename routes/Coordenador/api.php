@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/', 'StoreController');
-Route::post('/login', 'LoginController');
+//Route::post('/login', 'LoginController');
+Route::post('/login', 'Login');
 
 
 Route::middleware('auth:coordenador')->get('/', function () {
