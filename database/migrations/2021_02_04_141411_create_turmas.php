@@ -15,10 +15,13 @@ class CreateTurmas extends Migration
     {
         Schema::create('turmas', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('professor_id');
             $table->string('semestre');
             $table->date('inicio');
             $table->date('fim');
             $table->timestamps();
+
+            $table->foreign('professor_id')->references('id')->on('professores');
         });
     }
 
