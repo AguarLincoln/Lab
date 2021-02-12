@@ -14,9 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/', 'StoreController');
+Route::post('/', 'Coordenador\StoreController');
 //Route::post('/login', 'LoginController');
-Route::post('/login', 'Login');
+Route::post('/login', 'Coordenador\LoginController');
+
+
+
 
 
 Route::middleware('auth:coordenador')->get('/', function () {
@@ -24,3 +27,4 @@ Route::middleware('auth:coordenador')->get('/', function () {
 });
 
 Route::post('/vaga', 'Vaga\StoreController');
+Route::get('/vaga', 'Vaga\AllController');

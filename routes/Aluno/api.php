@@ -14,5 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/', 'StoreController');
-Route::post('/login', 'LoginController');
+Route::post('/', 'Aluno\StoreController');
+Route::post('/login', 'Aluno\LoginController');

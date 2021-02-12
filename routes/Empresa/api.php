@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['auth:coordenador', 'auth:professor', 'scopes:coordenador,professor'])->group(function () {
-    Route::post('/', 'StoreController');
+    Route::post('/', 'Empresa\StoreController');
 });
 
-Route::get('/', 'ShowAllController');
+Route::get('/', 'Empresa\ShowAllController');
