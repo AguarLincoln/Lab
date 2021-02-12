@@ -16,6 +16,12 @@ class StoreController extends Controller
      */
     public function __invoke(Request $request)
     {
+
+        $this->validate($request, [
+            'email' => 'required|unique:alunos,email',
+            'senha' => 'required|min:6|max:255'
+        ]);
+
         $data = $request->only(
             'nome',
             'sexo',
