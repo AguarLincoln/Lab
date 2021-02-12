@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Coordenador\Vaga;
+namespace App\Http\Controllers\Vaga;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
