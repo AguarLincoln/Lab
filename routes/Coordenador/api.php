@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/', 'Coordenador\StoreController');
 //Route::post('/login', 'LoginController');
-Route::post('/login', 'Coordenador\LoginController');
+Route::post('/login', 'Coordenador\Login');
 
 
 
