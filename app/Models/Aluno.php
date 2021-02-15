@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -52,4 +53,14 @@ class Aluno extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function setDataNascAttribute($value)
+    {
+        $this->attributes['data_nasc'] = Carbon::parse($value)->format('Y/m/d');
+    }
+
+    public function getDataNascAttribute($value)
+    {
+        return Carbon::parse($value)->format('d/m/Y');
+    }
 }
