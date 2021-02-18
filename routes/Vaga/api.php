@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth:coordenador', 'auth:professor'])->group(function () {
     // Route::post('/', 'StoreController');
 });
+
+Route::middleware(['auth:aluno', 'scopes:aluno'])->group(function () {
+    Route::post('/candidatar', 'Vaga\\CandidatarController');
+});

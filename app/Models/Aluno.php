@@ -63,4 +63,9 @@ class Aluno extends Authenticatable
     {
         return Carbon::parse($value)->format('d/m/Y');
     }
+
+    public function vagas()
+    {
+        return $this->belongsToMany(Vaga::class, 'aluno_vagas');
+    }
 }
