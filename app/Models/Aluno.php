@@ -66,6 +66,11 @@ class Aluno extends Authenticatable
 
     public function vagas()
     {
-        return $this->belongsToMany(Vaga::class, 'aluno_vagas');
+        return $this->belongsToMany(Vaga::class, 'aluno_vagas', 'aluno_id', 'vaga_id');
+    }
+
+    public function turmas()
+    {
+        return $this->hasMany(Turma::class, 'aluno_turmas');
     }
 }

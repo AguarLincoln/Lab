@@ -18,6 +18,7 @@ Route::post('/', 'Coordenador\StoreController');
 //Route::post('/login', 'LoginController');
 Route::post('/login', 'Coordenador\Login');
 
+Route::post('/turma', 'Turma\StoreController');
 
 
 
@@ -26,5 +27,8 @@ Route::middleware('auth:coordenador')->get('/', function () {
     return Coordenador::all();
 });
 
-Route::post('/vaga', 'Vaga\StoreController');
-Route::get('/vaga', 'Vaga\AllController');
+
+Route::middleware(['auth:coordenador', 'auth:professor', 'scopes:coordenador,professor'])->group(function () {
+    Route::post('/vaga', 'Vaga\StoreController');
+    Route::get('/vaga', 'Vaga\AllController');
+});
