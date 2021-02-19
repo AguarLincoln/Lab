@@ -19,4 +19,10 @@ Route::middleware(['auth:coordenador', 'auth:professor', 'scopes:coordenador,pro
     Route::post('/', 'Aluno\StoreController');
 });
 
+
+Route::middleware(['auth:aluno', 'scopes:aluno'])->group(function () {
+    Route::post('/canditar/{id}', 'Vaga\CandidatarController');
+    Route::get('/vaga', 'Vaga\AllController');
+    Route::get('/turma/participante', 'Turma\AllStudentController'); //falta id
+});
 Route::post('/login', 'Aluno\LoginController');
