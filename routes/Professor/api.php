@@ -15,4 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/', 'Professor\StoreController');
+Route::get('/', 'Professor\AllController');
 Route::post('/login', 'Professor\LoginController');
+
+Route::post('/turma/{turmaId}/aluno/{alunoId}', 'Turma\AddStudentController'); // turma/{id}/aluno/{id}
+Route::delete('/turma/{turmaId}/aluno/{alunoId}', 'Turma\DestroyStudentController');
+Route::put('/turma/{turmaId}/aluno/{alunoId}', 'Turma\ApStudentController');
+
+Route::get('/turma', 'Turma\AllController');

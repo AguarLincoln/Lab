@@ -71,6 +71,6 @@ class Aluno extends Authenticatable
 
     public function turmas()
     {
-        return $this->hasMany(Turma::class, 'aluno_turmas');
+        return $this->belongsToMany(Turma::class, 'avaliacoes')->withPivot('ap1', 'ap2');
     }
 }

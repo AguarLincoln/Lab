@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -54,4 +54,14 @@ class Professor extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function setDataNascAttribute($value)
+    {
+        $this->attributes['data_nasc'] = Carbon::parse($value)->format('Y/m/d');
+    }
+
+    public function getDataNascAttribute($value)
+    {
+        return Carbon::parse($value)->format('d/m/Y');
+    }
 }

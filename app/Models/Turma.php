@@ -39,8 +39,10 @@ class Turma extends Model
         return Carbon::parse($value)->format('d/m/Y');
     }
 
+    //relações
+
     public function alunos()
     {
-        return $this->hasMany(Aluno::class, 'aluno_turmas');
+        return $this->belongsToMany(Aluno::class, 'avaliacoes')->withPivot('ap1', 'ap2', 'ap3', 'relatorio');
     }
 }
