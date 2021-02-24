@@ -23,8 +23,8 @@ class ApStudentController extends Controller
             $turma = $turma->alunos()->updateExistingPivot($alunoId, $data);
             //$turma = $turma->alunos()->updateExistingPivot($alunoId, ['ap1' => 10, 'ap2' => 10]);
 
-            response()->json([
-                'menssagem' => 'Notas atualizada com sucesso'
+            return response()->json([
+                'menssagem' => 'Notas atualizada com sucesso',
             ]);
         } catch (\Exception $e) {
             return response()->json([

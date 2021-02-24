@@ -20,7 +20,7 @@ class DestroyStudentController extends Controller
             $turma = Turma::find($turmaId);
             $turma = $turma->alunos()->detach($alunoId);
 
-            response()->json([
+            return response()->json([
                 'mensagem' => 'Aluno excluido da turma com sucesso'
             ]);
         } catch (\Exception $e) {

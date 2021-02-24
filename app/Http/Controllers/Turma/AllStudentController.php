@@ -17,8 +17,8 @@ class AllStudentController extends Controller
     public function __invoke($id)
     {
         try {
-            //$turma = Turma::Where('id', $id)->with('alunos')->get();
-            $turma = Turma::with('alunos')->get();
+            $turma = Turma::Where('id', $id)->with('alunos')->get();
+            //$turma = Turma::with('alunos')->get();
             return response()->json([
                 'dados' => $turma
             ], 200);
