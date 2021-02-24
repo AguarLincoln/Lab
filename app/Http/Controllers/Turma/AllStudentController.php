@@ -14,9 +14,19 @@ class AllStudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke()
+    public function __invoke($id)
     {
-        $turma = Turma::with('alunos')->get();
-        return $turma;
+        try {
+            //$turma = Turma::Where('id', $id)->with('alunos')->get();
+            $turma = Turma::with('alunos')->get();
+            return response()->json([
+                'dados' => $turma
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'mensagem' => 'Error, tente novamente mais tarde',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 }

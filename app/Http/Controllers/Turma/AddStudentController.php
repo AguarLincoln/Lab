@@ -20,9 +20,9 @@ class AddStudentController extends Controller
 
         try {
             $turma = Turma::find($turmaId);
-            $turma = $turma->alunos()->attach($alunoId, ['ap1' => 0, 'ap2' => 0, 'ap3' => 0]);
+            $turma = $turma->alunos()->toggle($alunoId, ['ap1' => 0, 'ap2' => 0, 'ap3' => 0]);
 
-            response()->json([
+            return response()->json([
                 'menssagem' => 'Aluno inserido com sucesso'
             ]);
         } catch (\Exception $e) {
