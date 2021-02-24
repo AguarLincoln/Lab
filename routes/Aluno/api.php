@@ -14,15 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth:coordenador', 'auth:professor', 'scopes:coordenador,professor'])->group(function () {
+Route::middleware(['auth:coordenador,professor', 'scopes:coordenador,professor'])->group(function () {
     Route::get('/', 'Aluno\AllController');
     Route::post('/', 'Aluno\StoreController');
+    Route::delete('/{id}', 'Aluno\DestroyController');
 });
 
 
 Route::middleware(['auth:aluno', 'scopes:aluno'])->group(function () {
     Route::post('/canditar/{id}', 'Vaga\CandidatarController');
     Route::get('/vaga', 'Vaga\AllController');
-    Route::get('/turma/participante', 'Turma\AllStudentController'); //falta id
+    Route::get('/turma/{id}/participante', 'Turma\AllStudentController'); //falta id
+
+    Route::delete('/{id}', 'Aluno\DestroyController');
 });
 Route::post('/login', 'Aluno\LoginController');
+Route::get('/livres', 'Aluno\FreeController');

@@ -16,6 +16,8 @@ class AllController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return response(Aluno::all());
+        return response()->json([
+            'dados' => Aluno::all()
+        ]);
     }
 }
