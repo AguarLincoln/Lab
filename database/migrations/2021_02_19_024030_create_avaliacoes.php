@@ -14,6 +14,7 @@ class CreateAvaliacoes extends Migration
     public function up()
     {
         Schema::create('avaliacoes', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('aluno_id');
             $table->foreignId('turma_id');
 
@@ -26,7 +27,6 @@ class CreateAvaliacoes extends Migration
 
             $table->foreign('aluno_id')->references('id')->on('alunos');
             $table->foreign('turma_id')->references('id')->on('turmas');
-            $table->primary('aluno_id', 'turmas_id');
         });
     }
 
