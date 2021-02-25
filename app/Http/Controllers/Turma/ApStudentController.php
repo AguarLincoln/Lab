@@ -17,6 +17,16 @@ class ApStudentController extends Controller
     public function __invoke(Request $request, $turmaId, $alunoId)
     {
         $data = $request->only('ap1', 'ap2', 'ap3', 'relatorio');
+
+        $savedPdf = $request->file('relatorio');
+
+        if ($savedPdf) {
+            $savedPdf = $savedPdf->store('relarorio/pdf/');
+            $data['relatorio'] = $savedPdf;
+        }
+
+
+
         try {
 
             $turma = Turma::find($turmaId);
