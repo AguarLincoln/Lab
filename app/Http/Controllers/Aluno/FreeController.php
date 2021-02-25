@@ -19,13 +19,22 @@ class FreeController extends Controller
 
         try {
 
-            $aluno = DB::table('alunos')
-                ->leftJoin('avaliacoes', 'alunos.id', '=', 'avaliacoes.aluno_id')
-                ->whereNULL('avaliacoes.aluno_id')->get();
+            $aluno = DB::select('SELECT *
+                    FROM alunos AL
+                    Where AL.id not in (
+                    SELECT distinct(A.id) FROM alunos A, avaliacoes AV, turmas T
+                    WHERE (A.id = AV.aluno_id AND AV.turma_id = T.id)
+                )');
 
-            return $aluno;
+
+            return response()->json([
+                'dados' => $aluno
+            ], 200);
         } catch (\Exception $e) {
-            return $e->getMessage();
+            return response()->json([
+                'menssagem' => 'Error, tente novamente mais tarde',
+                'error' => $e->getMessage()
+            ]);
         }
     }
 }
