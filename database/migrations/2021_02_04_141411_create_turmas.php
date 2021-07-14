@@ -21,7 +21,7 @@ class CreateTurmas extends Migration
             $table->date('fim');
             $table->timestamps();
 
-            $table->foreign('professor_id')->references('id')->on('professores');
+            $table->foreign('professor_id')->references('id')->on('professores')->onDelete('cascade');
         });
     }
 

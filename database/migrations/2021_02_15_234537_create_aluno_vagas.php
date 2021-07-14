@@ -18,8 +18,8 @@ class CreateAlunoVagas extends Migration
             $table->foreignId('aluno_id');
             $table->foreignId('vaga_id');
 
-            $table->foreign('aluno_id')->references('id')->on('alunos');
-            $table->foreign('vaga_id')->references('id')->on('vagas');
+            $table->foreign('aluno_id')->references('id')->on('alunos')->onDelete('cascade');
+            $table->foreign('vaga_id')->references('id')->on('vagas')->onDelete('cascade');
             //$table->primary('aluno_id', 'vaga_id');
             $table->timestamps();
         });

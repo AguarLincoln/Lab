@@ -14,22 +14,14 @@ class ApStudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request, $turmaId, $alunoId)
+    public function __invoke(Request $request, $alunoId)
     {
-        $data = $request->only('ap1', 'ap2', 'ap3', 'relatorio');
-
-        $savedPdf = $request->file('relatorio');
-
-        if ($savedPdf) {
-            $savedPdf = $savedPdf->store('relarorio/pdf/');
-            $data['relatorio'] = $savedPdf;
-        }
-
-
+        $data = $request->only('ap1', 'ap2', 'ap3');
 
         try {
 
-            $turma = Turma::find($turmaId);
+            $turma = Turma::all();
+            return $turma;
             $turma = $turma->alunos()->updateExistingPivot($alunoId, $data);
             //$turma = $turma->alunos()->updateExistingPivot($alunoId, ['ap1' => 10, 'ap2' => 10]);
 

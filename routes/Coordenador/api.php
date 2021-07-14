@@ -30,5 +30,5 @@ Route::middleware('auth:coordenador')->get('/', function () {
 
 Route::middleware(['auth:coordenador,professor', 'scopes:coordenador,professor'])->group(function () {
     Route::post('/vaga', 'Vaga\StoreController');
-    Route::get('/vaga', 'Vaga\AllController');
+    Route::get  ('/vaga', 'Vaga\AllController');
 });

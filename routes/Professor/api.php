@@ -20,7 +20,7 @@ Route::post('/login', 'Professor\LoginController');
 
 Route::post('/turma/{turmaId}/aluno/{alunoId}', 'Turma\AddStudentController'); // turma/{id}/aluno/{id}
 Route::delete('/turma/{turmaId}/aluno/{alunoId}', 'Turma\DestroyStudentController');
-Route::put('/turma/{turmaId}/aluno/{alunoId}', 'Turma\ApStudentController');
+Route::put('/turma/aluno/{alunoId}', 'Turma\ApStudentController');
 Route::get('/turma', 'Turma\AllController');
 
 Route::get('/aluno', 'Aluno\AllController');
